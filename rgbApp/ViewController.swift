@@ -19,32 +19,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var rSlider: UISlider!
     @IBOutlet weak var gSlider: UISlider!
     @IBOutlet weak var bSlider: UISlider!
-    //UIColorインスタンス
-    var currentColor: UIColor!
     
     //スライダーを動かしたときの処理
-    //スライダーの値を1にするか255にするか
     @IBAction func rSliderChanged(_ sender: UISlider) {
-        let value:Int = Int(sender.value * 255)
+        let value:Int = Int(sender.value)
         rLabel.text = "R:\(value)"
+        displayColorCode()
     }
     @IBAction func gSliderChanged(_ sender: UISlider) {
-        let value:Int = Int(sender.value * 255)
+        let value:Int = Int(sender.value)
         gLabel.text = "G:\(value)"
+        displayColorCode()
     }
     @IBAction func bSliderChanged(_ sender: UISlider) {
-        let value:Int = Int(sender.value * 255)
+        let value:Int = Int(sender.value)
         bLabel.text = "B:\(value)"
+        displayColorCode()
     }
     
     //カラーコードの表示
     func displayColorCode() {
-        //スライダーの値をCGFloatで取得
-        let r:CGFloat = CGFloat(rSlider.value)
-        let g:CGFloat = CGFloat(gSlider.value)
-        let b:CGFloat = CGFloat(bSlider.value)
-        //UIColorを取得
-        currentColor = UIColor(displayP3Red: r, green: g, blue: b, alpha: 1.0)
+        //スライダーの値を取得
+        let r:Int = Int(rSlider.value)
+        let g:Int = Int(gSlider.value)
+        let b:Int = Int(bSlider.value)
+        //16進数の（大文字の）文字列に変換する
+        let colorCode:String = String(NSString(format: "%02x%02x%02x", r, g, b)).uppercased()
+        //ラベルの表示
+        rgbValueLabel.text = "RGB value is #" + colorCode
+        
         
     }
     override func viewDidLoad() {
