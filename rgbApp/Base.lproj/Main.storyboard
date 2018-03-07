@@ -17,12 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPX-5C-GTD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPX-5C-GTD">
                                 <rect key="frame" x="0.0" y="235" width="375" height="432"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="432" id="79v-ka-4Fn"/>
+                                    <constraint firstAttribute="height" constant="432" id="BcX-6b-a8c"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aRf-Id-X8B">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCell" id="aRf-Id-X8B">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aRf-Id-X8B" id="4RD-1s-6Ya">
@@ -83,11 +86,22 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="G8f-0G-VHW"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ONC-5Y-fgJ"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U2y-PE-kU6"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VfF-sv-hyX"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lu9-BH-g5o"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r8r-kj-Oxl"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yDZ-x0-bx0"/>
+                            <constraint firstItem="LPX-5C-GTD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yTu-4P-sPX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="bLabel" destination="pak-D1-WE4" id="fng-nd-T8n"/>
                         <outlet property="bSlider" destination="VZz-Yz-NJw" id="rRe-eQ-uqi"/>
+                        <outlet property="colorTable" destination="LPX-5C-GTD" id="39G-6l-9dQ"/>
                         <outlet property="gLabel" destination="IcX-xH-Big" id="zmy-yG-MXM"/>
                         <outlet property="gSlider" destination="Lkz-T1-vW8" id="pBC-cf-icn"/>
                         <outlet property="rLabel" destination="aKz-Pg-mIp" id="OYI-89-ZZo"/>
