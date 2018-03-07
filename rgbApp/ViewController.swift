@@ -50,7 +50,8 @@ class ViewController: UIViewController, UITableViewDataSource,  UITableViewDeleg
         let colorCode:String = String(NSString(format: "%02x%02x%02x", r, g, b)).uppercased()
         //ラベルの表示
         rgbValueLabel.text = "RGB value is #" + colorCode
-        
+        //tableにCellの中身の変更を通知する →これはここに書くべき？？
+        colorTable.reloadData()
     }
     
     //tableビューの処理
@@ -60,15 +61,57 @@ class ViewController: UIViewController, UITableViewDataSource,  UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "colorCell", for: indexPath)
-        let r:Int = Int(rSlider.value)
-        let g:Int = Int(gSlider.value)
-        let b:Int = Int(bSlider.value)
+        var r:Int = Int(rSlider.value)
+        var g:Int = Int(gSlider.value)
+        var b:Int = Int(bSlider.value)
+        
+        //Cellによって色を変化させるための処理
+        switch indexPath.row {
+        case 1:
+            r = checkNumber(r-20)
+        case 2:
+            r = checkNumber(r-10)
+        case 3:
+            r = checkNumber(r+10)
+        case 4:
+            r = checkNumber(r+20)
+        case 5:
+            g = checkNumber(g-20)
+        case 6:
+            g = checkNumber(g-10)
+        case 7:
+            g = checkNumber(g+10)
+        case 8:
+            g = checkNumber(g+20)
+        case 9:
+            b = checkNumber(b-20)
+        case 10:
+            b = checkNumber(b-10)
+        case 11:
+            b = checkNumber(b+10)
+        case 12:
+            b = checkNumber(b+20)
+        default:
+            break // do nothing
+        }
+        
         //カラーコードを生成
         let colorCode:String = "#" + String(NSString(format: "%02x%02x%02x", r, g, b)).uppercased()
         //Cellに色とカラーコードのテキストラベルを反映
         cell.backgroundColor = getUIColor(r: r, g: g, b: b)
         cell.textLabel?.text = colorCode
         return cell
+    }
+    
+    //受け取った数値を0〜255の間に収めるメソッド
+    func checkNumber(_ num:Int)->Int {
+        if num > 255 {
+            return 255
+        }
+        if num < 0 {
+            return 0
+        }
+        return num
     }
 
     //rgbの値を受け取り、UIcolorインスタンスを返すメソッド
